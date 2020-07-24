@@ -3,6 +3,9 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+// import routes
+const authRoute = require('./routes/auth')
+
 dotenv.config();
 
 // connect to db
@@ -13,8 +16,9 @@ mongoose.connect(
     () => console.log('connected to db!')
 )
 
-// import routes
-const authRoute = require('./routes/auth')
+// middleware
+app.use(express.json()); // now we can send post requests
+
 
 
 // route middlewares (prefixes)
