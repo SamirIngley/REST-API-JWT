@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 
 // import routes
 const authRoute = require('./routes/auth')
+const postRoute = require('./routes/posts')
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(express.json()); // now we can send post requests
 
 // route middlewares (prefixes)
 app.use('/api/user', authRoute);
+app.use('/api/posts', postRoute); // when we navigate to posts, we get the post route
 
 
 app.listen(3000, () => console.log('Server up and running'));

@@ -56,10 +56,16 @@ router.post('/login', async (req,res) => {
     if (!validPass) return res.status(400).send('Invalid Password')
     
     // CREATE AND ASSIGN JWT
+    // jwt is used to show the rest of the app that the user is verified/authenticated
+    // token can tell app the id of the user (see below ***)
     // we use id bc when we have access to this id, we know user is logged in
     // other param is some secret we create and add to env in dotenv
     const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
     res.header('auth-token', token).send(token);
+    // *** can verify logged in at jwt.io - get user id and date
+    // go to headers in postman, you can see the auth-token
+
+
 
 
     res.send('Logged in!')
