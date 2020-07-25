@@ -30,7 +30,7 @@ router.post('/register', async (req, res) => {  // asyn bc db needs time
 
     try{ // try to submit
         const savedUser = await user.save()
-        res.send(savedUser);
+        res.send({user: user._id});
     } catch(err){ // else error
         res.status(400).send(err);
     }
